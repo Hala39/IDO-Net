@@ -6,6 +6,7 @@ namespace API.Entities
         public Unit Unit { get; set; }
     }
 
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Unit 
     {
         minute = 0,
