@@ -10,7 +10,8 @@ namespace API.Helpers
     {
         public AutoMapperProfile()
         {
-            // CreateMap<ProjectDTO, Project>().ReverseMap(); //reverse so the both direction
+            CreateMap<AppTask, TaskDto>().ReverseMap();
+            CreateMap<NewTaskDto, TaskDto>().ReverseMap();
         }
     }
 }
