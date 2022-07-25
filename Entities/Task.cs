@@ -13,9 +13,9 @@ namespace API.Entities
         public Unit estimationUnit { get; set; }
         public int estimatedTime { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
-        public DateTime DueDate { get; set; }
-        public Status Status { get; set; } = Status.toDo;
-        public Importance Importance { get; set; }
+        public Nullable<DateTime> DueDate { get; set; } = null;
+        public Status Status { get; set; } = Status.TODO;
+        public Importance Importance { get; set; } = Importance.LOW;
         public string UserId { get; set; }
         public User User { get; set; }
     }

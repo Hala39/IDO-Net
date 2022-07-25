@@ -3,8 +3,8 @@ namespace API.Entities
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Importance
     {
-        low = 0,
-        medium = 1,
-        high = 2
+        LOW = 0,
+        MEDIUM = 1,
+        HIGH = 2
     }
 }

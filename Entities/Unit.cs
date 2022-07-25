@@ -3,9 +3,9 @@ namespace API.Entities
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Unit
     {
-        minute = 0,
-        hour = 1,
-        day = 2,
-        year = 3
+        MINUTE = 0,
+        HOUR = 1,
+        DAY = 2,
+        YEAR = 3
     }
 }

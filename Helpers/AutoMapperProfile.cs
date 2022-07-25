@@ -11,6 +11,7 @@ namespace API.Helpers
         public AutoMapperProfile()
         {
             CreateMap<AppTask, TaskDto>().ReverseMap();
+            CreateMap<NewTaskDto, AppTask>().ReverseMap();
             CreateMap<NewTaskDto, TaskDto>().ReverseMap();
         }
     }
