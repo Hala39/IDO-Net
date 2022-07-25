@@ -18,18 +18,22 @@ namespace API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly TokenService _tokenService;
+        private readonly DataContext _data;
 
         public UserController(
             UserManager<User> userManager, 
             SignInManager<User> signInManager,
-            TokenService tokenService
+            TokenService tokenService,
+            DataContext data
         )
         {
             _signInManager = signInManager;
             _tokenService = tokenService;
+            _data = data;
             _userManager = userManager;
         }
 
+        [HttpPost("login")]
         public async Task<ActionResult<Result<UserCreds>>> Login(UserLoginDto creds) 
         {
             var user = await _userManager.Users
@@ -45,6 +49,12 @@ namespace API.Controllers
             }
 
             return Unauthorized("Wrong Password!");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<User>>> GetUsers()
+        {
+            return await _data.Users.ToListAsync();
         }
 
         private UserCreds CreateUserObject(User user)
