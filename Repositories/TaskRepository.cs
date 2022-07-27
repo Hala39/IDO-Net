@@ -25,10 +25,12 @@ namespace API.Repositories
             var result = new Result<NewTaskDto>();
 
             newTask.UserId = GetUserId();
-            await _context.Tasks.AddAsync(_mapper.Map<AppTask>(newTask));
+            var mapped = _mapper.Map<AppTask>(newTask);
+
+            await _context.Tasks.AddAsync(mapped);
             var success = await _context.SaveChangesAsync() > 0;
 
-            if (success) return Result<TaskDto>.Success(_mapper.Map<TaskDto>(newTask));
+            if (success) return Result<TaskDto>.Success(_mapper.Map<TaskDto>(mapped));
             else return Result<TaskDto>.Failure("Operation failed!");
         }
 
@@ -43,7 +45,11 @@ namespace API.Repositories
         public async Task<Result<List<TaskDto>>> GetTasksForUser()
         {
             var result = new Result<TaskDto>();
-            var tasks = await _context.Tasks.Where(t => t.UserId == GetUserId()).ToListAsync();
+            var tasks = await _context.Tasks
+                .Where(t => t.UserId == GetUserId())
+                .OrderByDescending(t => t.Date)
+                .ToListAsync();
+                
             if (tasks.Count > 0) return Result<List<TaskDto>>.Success(tasks.Select(t => _mapper.Map<TaskDto>(t)).ToList());
             else return Result<List<TaskDto>>.Failure("No tasks found!");
         }
@@ -56,6 +62,21 @@ namespace API.Repositories
             var success = await _context.SaveChangesAsync() > 0;
             if (success) return Result<TaskDto>.Success(_mapper.Map<TaskDto>(updatedTask));
             else return Result<TaskDto>.Failure("Operation failed");
+        }
+
+        public async Task<Result<TaskDto>> UpdateStatus(UpdateTaskStatusDto updateTaskStatusDto)
+        {
+            
+                var targetTask = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == updateTaskStatusDto.TaskId);
+
+                targetTask.Status = ((Status) updateTaskStatusDto.TargetStatusIndex);
+
+                _context.Tasks.Update(targetTask);
+
+            var success = await _context.SaveChangesAsync() > 0;
+            if (success) return Result<TaskDto>.Success(_mapper.Map<TaskDto>(targetTask));
+            else return Result<TaskDto>.Failure("Operation failed");
+
         }
     }
 }

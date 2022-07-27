@@ -40,5 +40,11 @@ namespace API.Controllers
         {
             return Ok(await _taskRepo.UpdateTask(updatedTask));
         }
+
+        [HttpPut("status")]
+        public async Task<ActionResult<Result<TaskDto>>> UpdateTaskStatus(UpdateTaskStatusDto updatedTask)
+        {
+            return Ok(await _taskRepo.UpdateStatus(updatedTask));
+        }
     }
 }

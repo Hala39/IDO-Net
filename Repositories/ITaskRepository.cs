@@ -11,5 +11,6 @@ namespace API.Repositories
         Task<Result<List<TaskDto>>> GetTasksForUser();
         Task<Result<TaskDto>> AddTask(NewTaskDto newTask);
         Task<Result<TaskDto>> UpdateTask(UpdateTaskDto updatedTask);
+        Task<Result<TaskDto>> UpdateStatus(UpdateTaskStatusDto updateTaskStatusDto);
     }
 }

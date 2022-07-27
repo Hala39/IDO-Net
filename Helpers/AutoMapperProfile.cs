@@ -13,6 +13,9 @@ namespace API.Helpers
             CreateMap<AppTask, TaskDto>().ReverseMap();
             CreateMap<NewTaskDto, AppTask>().ReverseMap();
             CreateMap<NewTaskDto, TaskDto>().ReverseMap();
+            CreateMap<AppTask, UpdateTaskStatusDto>().ReverseMap();
+            CreateMap<TaskDto, AppTask>();
+            CreateMap<AppTask, TaskDto>();
         }
     }
 }
