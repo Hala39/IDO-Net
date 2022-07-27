@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace API.Data
             base.OnModelCreating(modelBuilder);
             this.SeedUsers(modelBuilder);
             this.SeedTasks(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
         private void SeedUsers(ModelBuilder builder)  
@@ -49,7 +51,8 @@ namespace API.Data
                     estimatedTime = 6,
                     estimationUnit = Unit.HOUR,
                     Importance = Importance.HIGH,
-                    UserId = this.Id
+                    Status = Status.DOING,
+                    UserId = this.Id,
                 },
 
                 new NewTaskDto()
@@ -61,6 +64,7 @@ namespace API.Data
                     estimatedTime = 3,
                     estimationUnit = Unit.HOUR,
                     Importance = Importance.LOW,
+                    Status = Status.DONE,
                     UserId = this.Id
                 },
 
@@ -73,6 +77,7 @@ namespace API.Data
                     estimatedTime = 30,
                     estimationUnit = Unit.MINUTE,
                     Importance = Importance.MEDIUM,
+                    Status = Status.DOING,
                     UserId = this.Id
                 },
 
@@ -85,6 +90,7 @@ namespace API.Data
                     estimatedTime = 2,
                     estimationUnit = Unit.HOUR,
                     Importance = Importance.LOW,
+                    Status = Status.DOING,
                     UserId = this.Id
                 },
 
@@ -108,6 +114,7 @@ namespace API.Data
                     estimatedTime = 8,
                     estimationUnit = Unit.DAY,
                     Importance = Importance.HIGH,
+                    Status = Status.DONE,
                     UserId = this.Id
                 },
 

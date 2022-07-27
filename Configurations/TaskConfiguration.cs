@@ -11,10 +11,10 @@ namespace API.Configurations
     {
         public void Configure(EntityTypeBuilder<AppTask> builder)
         {
-            builder.Property(t => t.Category).HasColumnType("varchar").IsRequired();
-            builder.Property(t => t.Title).HasColumnType("varchar").IsRequired();
+            builder.Property(t => t.Category).HasColumnType("varchar").IsRequired().HasMaxLength(500);
+            builder.Property(t => t.Title).HasColumnType("varchar").IsRequired().HasMaxLength(500);
             builder.Property(t => t.estimatedTime).HasColumnType("SMALLINT").IsRequired();
-            builder.Property(t => t.estimationUnit).IsRequired().HasDefaultValue(Unit.MINUTE).HasConversion<string>();
+            builder.Property(t => t.estimationUnit).IsRequired().HasDefaultValue(Unit.HOUR).HasConversion<string>();
             builder.Property(t => t.DueDate).HasDefaultValue(null);
             builder.Property(t => t.Date).HasDefaultValue(DateTime.Now).HasConversion<string>().IsRequired();
             builder.Property(t => t.Status).HasDefaultValue(Status.TODO).HasConversion<string>();

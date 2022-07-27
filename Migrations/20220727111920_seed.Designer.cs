@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220725172953_task-configuration")]
-    partial class taskconfiguration
+    [Migration("20220727111920_seed")]
+    partial class seed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,31 +33,47 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(48)")
+                        .HasDefaultValue("2022-07-27 14:19:20.157883");
 
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Importance")
-                        .HasColumnType("int");
+                    b.Property<string>("Importance")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("LOW");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("TODO");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("estimatedTime")
-                        .HasColumnType("int");
+                    b.Property<short>("estimatedTime")
+                        .HasColumnType("SMALLINT");
 
-                    b.Property<int>("estimationUnit")
-                        .HasColumnType("int");
+                    b.Property<string>("estimationUnit")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("HOUR");
 
                     b.HasKey("Id");
 
@@ -70,90 +86,90 @@ namespace API.Migrations
                         {
                             Id = -7,
                             Category = "Education",
-                            Date = new DateTime(2022, 7, 25, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8429),
-                            DueDate = new DateTime(2022, 7, 28, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8258),
-                            Importance = 2,
-                            Status = 0,
+                            Date = "2022-07-27 14:19:20.1575613",
+                            DueDate = new DateTime(2022, 7, 30, 14, 19, 20, 157, DateTimeKind.Local).AddTicks(5447),
+                            Importance = "HIGH",
+                            Status = "DOING",
                             Title = "Prepare the essay",
                             UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
-                            estimatedTime = 6,
-                            estimationUnit = 1
+                            estimatedTime = (short)6,
+                            estimationUnit = "HOUR"
                         },
                         new
                         {
                             Id = -6,
                             Category = "Maintenance",
-                            Date = new DateTime(2022, 7, 25, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8446),
-                            DueDate = new DateTime(2022, 8, 7, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8311),
-                            Importance = 0,
-                            Status = 0,
+                            Date = "2022-07-27 14:19:20.157563",
+                            DueDate = new DateTime(2022, 8, 9, 14, 19, 20, 157, DateTimeKind.Local).AddTicks(5493),
+                            Importance = "LOW",
+                            Status = "DONE",
                             Title = "Format the PC",
                             UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
-                            estimatedTime = 3,
-                            estimationUnit = 1
+                            estimatedTime = (short)3,
+                            estimationUnit = "HOUR"
                         },
                         new
                         {
                             Id = -5,
                             Category = "Maintenance",
-                            Date = new DateTime(2022, 7, 25, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8453),
-                            DueDate = new DateTime(2022, 7, 27, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8316),
-                            Importance = 1,
-                            Status = 0,
+                            Date = "2022-07-27 14:19:20.1575649",
+                            DueDate = new DateTime(2022, 7, 29, 14, 19, 20, 157, DateTimeKind.Local).AddTicks(5497),
+                            Importance = "MEDIUM",
+                            Status = "DOING",
                             Title = "Contact the support team of XYZ software to ask about the guarantee pricing",
                             UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
-                            estimatedTime = 30,
-                            estimationUnit = 0
+                            estimatedTime = (short)30,
+                            estimationUnit = "MINUTE"
                         },
                         new
                         {
                             Id = -4,
                             Category = "Work",
-                            Date = new DateTime(2022, 7, 25, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8460),
-                            DueDate = new DateTime(2022, 8, 10, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8320),
-                            Importance = 0,
-                            Status = 0,
+                            Date = "2022-07-27 14:19:20.1575658",
+                            DueDate = new DateTime(2022, 8, 12, 14, 19, 20, 157, DateTimeKind.Local).AddTicks(5502),
+                            Importance = "LOW",
+                            Status = "DOING",
                             Title = "Translate the resume",
                             UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
-                            estimatedTime = 2,
-                            estimationUnit = 1
+                            estimatedTime = (short)2,
+                            estimationUnit = "HOUR"
                         },
                         new
                         {
                             Id = -3,
                             Category = "Maintenance",
-                            Date = new DateTime(2022, 7, 25, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8465),
-                            Importance = 1,
-                            Status = 0,
+                            Date = "2022-07-27 14:19:20.1575664",
+                            Importance = "MEDIUM",
+                            Status = "TODO",
                             Title = "Fix the power button of the TV",
                             UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
-                            estimatedTime = 1,
-                            estimationUnit = 1
+                            estimatedTime = (short)1,
+                            estimationUnit = "HOUR"
                         },
                         new
                         {
                             Id = -2,
                             Category = "Work",
-                            Date = new DateTime(2022, 7, 25, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8472),
-                            DueDate = new DateTime(2022, 8, 2, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8332),
-                            Importance = 2,
-                            Status = 0,
+                            Date = "2022-07-27 14:19:20.157567",
+                            DueDate = new DateTime(2022, 8, 4, 14, 19, 20, 157, DateTimeKind.Local).AddTicks(5513),
+                            Importance = "HIGH",
+                            Status = "DONE",
                             Title = "Prepare the XD design",
                             UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
-                            estimatedTime = 8,
-                            estimationUnit = 2
+                            estimatedTime = (short)8,
+                            estimationUnit = "DAY"
                         },
                         new
                         {
                             Id = -1,
                             Category = "Education",
-                            Date = new DateTime(2022, 7, 25, 20, 29, 53, 386, DateTimeKind.Local).AddTicks(8477),
-                            Importance = 0,
-                            Status = 0,
+                            Date = "2022-07-27 14:19:20.1575675",
+                            Importance = "LOW",
+                            Status = "TODO",
                             Title = "Email the faculity director about the progress",
                             UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
-                            estimatedTime = 15,
-                            estimationUnit = 0
+                            estimatedTime = (short)15,
+                            estimationUnit = "MINUTE"
                         });
                 });
 
@@ -226,13 +242,13 @@ namespace API.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9007988c-cd03-434e-8d65-12f9bf7eb601",
+                            ConcurrencyStamp = "704a6f42-e7f7-4526-9147-9f322a0d41c8",
                             Email = "user@ido.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEBYv17Yw9LRJALhOseX3QjpAuNKgKZB7/LTxedOtLwQgDihsJ4TWkL2f1WRqDDhEsw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELk8o5fJULYi9XR51eP2SjbvYc8F6xzHdeaUf36QgNTW3gKyfnxodSifO7MLnWPJvw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0e7e8f3-30ff-4796-9442-c6e58cff6172",
+                            SecurityStamp = "2cb9d89d-f606-4a83-abf0-7d9faec575d1",
                             TwoFactorEnabled = false,
                             UserName = "IDO User"
                         });

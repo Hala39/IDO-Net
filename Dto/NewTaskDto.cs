@@ -10,10 +10,11 @@ namespace API.Dto
         public int? Id { get; set; }
         public string Title { get; set; }
         public string Category { get; set; }
-        public Unit estimationUnit { get; set; }
+        public Unit estimationUnit { get; set; } = Unit.HOUR;
         public int estimatedTime { get; set; }
         public Nullable<DateTime> DueDate { get; set; }
-        public Nullable<Importance> Importance { get; set; } = null;
+        public Importance Importance { get; set; } = Importance.LOW;
+        public Status Status { get; set; } = Status.TODO;
         public string UserId { get; set; }
     }
 }
