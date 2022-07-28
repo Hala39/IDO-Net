@@ -10,7 +10,7 @@ namespace API.Dto
         public int Id { get; set; }
         public string Title { get; set; }
         public string Category { get; set; }
-        public Unit estimationUnit { get; set; }
+        public string estimationUnit { get; set; }
         public int estimatedTime { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
         public DateTime? DueDate { get; set; } = null;

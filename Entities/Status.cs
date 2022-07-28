@@ -1,7 +1,6 @@
 
 namespace API.Entities
 {
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Status
     {
         TODO = 0,

@@ -10,7 +10,7 @@ namespace API.Entities
         public int Id { get; set; }
         public string Title { get; set; }
         public string Category { get; set; }
-        public Unit estimationUnit { get; set; }
+        public string estimationUnit { get; set; }
         public int estimatedTime { get; set; }
         public Status Status { get; set; } = Status.TODO;
         public DateTime Date { get; set; } = DateTime.Now;

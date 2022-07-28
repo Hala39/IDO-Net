@@ -1,6 +1,5 @@
 namespace API.Entities
 {
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Importance
     {
         LOW = 0,

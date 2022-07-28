@@ -57,10 +57,18 @@ namespace API.Repositories
         public async Task<Result<TaskDto>> UpdateTask(UpdateTaskDto updatedTask)
         {
             var result = new Result<TaskDto>();
-            var targetTask = await GetTaskById(updatedTask.Id);
-            targetTask.Value.Title = updatedTask.Title;
+            var targetTask = await _context.Tasks
+                .FirstOrDefaultAsync(t => t.Id == updatedTask.Id && t.UserId == GetUserId());
+
+            targetTask.Title = updatedTask.Title;
+            targetTask.Category = updatedTask.Category;
+            targetTask.DueDate = updatedTask.DueDate;
+            targetTask.estimatedTime = updatedTask.estimatedTime;
+            targetTask.estimationUnit = updatedTask.estimationUnit;
+            targetTask.Importance = updatedTask.Importance;
+
             var success = await _context.SaveChangesAsync() > 0;
-            if (success) return Result<TaskDto>.Success(_mapper.Map<TaskDto>(updatedTask));
+            if (success) return Result<TaskDto>.Success(_mapper.Map<TaskDto>(targetTask));
             else return Result<TaskDto>.Failure("Operation failed");
         }
 
