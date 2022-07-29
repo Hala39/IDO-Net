@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class enums : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -161,11 +161,11 @@ namespace API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    Category = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true),
+                    Category = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
                     estimationUnit = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true),
                     estimatedTime = table.Column<short>(type: "SMALLINT", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    Date = table.Column<string>(type: "nvarchar(48)", nullable: false, defaultValue: "2022-07-28 21:52:22.404156"),
+                    Date = table.Column<string>(type: "nvarchar(48)", nullable: false, defaultValue: "2022-07-29 19:45:24.5448816"),
                     DueDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Importance = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "LOW"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -183,42 +183,42 @@ namespace API.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "f76149c6-6a34-4263-bd27-4a78700b257a", "user@ido.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEBp66PojsfapmI2o30/JRQ1YrKSmab6ZWcS2PF2foTM7XWhwP1O2YIpnmCxLDra6Hw==", null, false, "dd8e92d1-67f4-4cfe-bd91-d4e290b0c5c5", false, "IDO User" });
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "ea67b559-9d60-49a6-90ba-d7e2c7392405", "user@ido.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEPGtFeVWNTQFHZO2B6xfp0bKH8YtqjwuFKF7JqhBe3Wmb4GwGTD5jYSMzBIi61i/8w==", null, false, "0d8253c1-45b7-44b6-a09a-5df0572e298c", false, "IDO User" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "Date", "DueDate", "Importance", "Status", "Title", "UserId", "estimatedTime", "estimationUnit" },
-                values: new object[] { -7, "Education", "2022-07-28 21:52:22.4039056", new DateTime(2022, 7, 31, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8905), "HIGH", 1, "Prepare the essay", "b74ddd14-6340-4840-95c2-db12554843e5", (short)6, "hours" });
+                values: new object[] { -7, "Education", "2022-07-29 19:45:24.5445789", new DateTime(2022, 8, 1, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5617), "HIGH", 1, "Prepare the essay", "b74ddd14-6340-4840-95c2-db12554843e5", (short)6, "hours" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "Date", "DueDate", "Status", "Title", "UserId", "estimatedTime", "estimationUnit" },
-                values: new object[] { -6, "Maintenance", "2022-07-28 21:52:22.4039069", new DateTime(2022, 8, 10, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8956), 2, "Format the PC", "b74ddd14-6340-4840-95c2-db12554843e5", (short)3, "hours" });
+                values: new object[] { -6, "Maintenance", "2022-07-29 19:45:24.5445808", new DateTime(2022, 8, 11, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5668), 2, "Format the PC", "b74ddd14-6340-4840-95c2-db12554843e5", (short)3, "hours" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "Date", "DueDate", "Importance", "Status", "Title", "UserId", "estimatedTime", "estimationUnit" },
-                values: new object[] { -5, "Maintenance", "2022-07-28 21:52:22.4039075", new DateTime(2022, 7, 30, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8962), "MEDIUM", 1, "Contact the support team of XYZ software to ask about the guarantee pricing", "b74ddd14-6340-4840-95c2-db12554843e5", (short)30, "minutes" });
+                values: new object[] { -5, "Maintenance", "2022-07-29 19:45:24.5445816", new DateTime(2022, 7, 31, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5673), "MEDIUM", 1, "Contact the support team of XYZ software to ask about the guarantee pricing", "b74ddd14-6340-4840-95c2-db12554843e5", (short)30, "minutes" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "Date", "DueDate", "Status", "Title", "UserId", "estimatedTime", "estimationUnit" },
-                values: new object[] { -4, "Work", "2022-07-28 21:52:22.4039081", new DateTime(2022, 8, 13, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8966), 1, "Translate the resume", "b74ddd14-6340-4840-95c2-db12554843e5", (short)2, "hours" });
+                values: new object[] { -4, "Work", "2022-07-29 19:45:24.5445822", new DateTime(2022, 8, 14, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5679), 1, "Translate the resume", "b74ddd14-6340-4840-95c2-db12554843e5", (short)2, "hours" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "Date", "DueDate", "Importance", "Title", "UserId", "estimatedTime", "estimationUnit" },
-                values: new object[] { -3, "Maintenance", "2022-07-28 21:52:22.4039086", null, "MEDIUM", "Fix the power button of the TV", "b74ddd14-6340-4840-95c2-db12554843e5", (short)1, "hour" });
+                values: new object[] { -3, "Maintenance", "2022-07-29 19:45:24.5445828", null, "MEDIUM", "Fix the power button of the TV", "b74ddd14-6340-4840-95c2-db12554843e5", (short)1, "hour" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "Date", "DueDate", "Importance", "Status", "Title", "UserId", "estimatedTime", "estimationUnit" },
-                values: new object[] { -2, "Work", "2022-07-28 21:52:22.4039092", new DateTime(2022, 8, 5, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8974), "HIGH", 2, "Prepare the XD design", "b74ddd14-6340-4840-95c2-db12554843e5", (short)8, "days" });
+                values: new object[] { -2, "Work", "2022-07-29 19:45:24.5445835", new DateTime(2022, 8, 6, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5687), "HIGH", 2, "Prepare the XD design", "b74ddd14-6340-4840-95c2-db12554843e5", (short)8, "days" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "Date", "DueDate", "Title", "UserId", "estimatedTime", "estimationUnit" },
-                values: new object[] { -1, "Education", "2022-07-28 21:52:22.4039099", null, "Email the faculity director about the progress", "b74ddd14-6340-4840-95c2-db12554843e5", (short)15, "minutes" });
+                values: new object[] { -1, "Education", "2022-07-29 19:45:24.5445841", null, "Email the faculity director about the progress", "b74ddd14-6340-4840-95c2-db12554843e5", (short)15, "minutes" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

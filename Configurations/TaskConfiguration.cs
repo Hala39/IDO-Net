@@ -11,7 +11,7 @@ namespace API.Configurations
     {
         public void Configure(EntityTypeBuilder<AppTask> builder)
         {
-            builder.Property(t => t.Category).HasColumnType("varchar").HasMaxLength(500);
+            builder.Property(t => t.Category).HasColumnType("varchar").HasMaxLength(50);
             builder.Property(t => t.Title).HasColumnType("varchar").IsRequired().HasMaxLength(500);
             builder.Property(t => t.estimatedTime).HasColumnType("SMALLINT");
             builder.Property(t => t.estimationUnit).HasColumnType("varchar").HasMaxLength(500);

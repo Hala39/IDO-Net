@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220728185222_enums")]
-    partial class enums
+    [Migration("20220729164524_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,14 +33,14 @@ namespace API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Category")
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Date")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(48)")
-                        .HasDefaultValue("2022-07-28 21:52:22.404156");
+                        .HasDefaultValue("2022-07-29 19:45:24.5448816");
 
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
@@ -82,8 +82,8 @@ namespace API.Migrations
                         {
                             Id = -7,
                             Category = "Education",
-                            Date = "2022-07-28 21:52:22.4039056",
-                            DueDate = new DateTime(2022, 7, 31, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8905),
+                            Date = "2022-07-29 19:45:24.5445789",
+                            DueDate = new DateTime(2022, 8, 1, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5617),
                             Importance = "HIGH",
                             Status = 1,
                             Title = "Prepare the essay",
@@ -95,8 +95,8 @@ namespace API.Migrations
                         {
                             Id = -6,
                             Category = "Maintenance",
-                            Date = "2022-07-28 21:52:22.4039069",
-                            DueDate = new DateTime(2022, 8, 10, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8956),
+                            Date = "2022-07-29 19:45:24.5445808",
+                            DueDate = new DateTime(2022, 8, 11, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5668),
                             Importance = "LOW",
                             Status = 2,
                             Title = "Format the PC",
@@ -108,8 +108,8 @@ namespace API.Migrations
                         {
                             Id = -5,
                             Category = "Maintenance",
-                            Date = "2022-07-28 21:52:22.4039075",
-                            DueDate = new DateTime(2022, 7, 30, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8962),
+                            Date = "2022-07-29 19:45:24.5445816",
+                            DueDate = new DateTime(2022, 7, 31, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5673),
                             Importance = "MEDIUM",
                             Status = 1,
                             Title = "Contact the support team of XYZ software to ask about the guarantee pricing",
@@ -121,8 +121,8 @@ namespace API.Migrations
                         {
                             Id = -4,
                             Category = "Work",
-                            Date = "2022-07-28 21:52:22.4039081",
-                            DueDate = new DateTime(2022, 8, 13, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8966),
+                            Date = "2022-07-29 19:45:24.5445822",
+                            DueDate = new DateTime(2022, 8, 14, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5679),
                             Importance = "LOW",
                             Status = 1,
                             Title = "Translate the resume",
@@ -134,7 +134,7 @@ namespace API.Migrations
                         {
                             Id = -3,
                             Category = "Maintenance",
-                            Date = "2022-07-28 21:52:22.4039086",
+                            Date = "2022-07-29 19:45:24.5445828",
                             Importance = "MEDIUM",
                             Status = 0,
                             Title = "Fix the power button of the TV",
@@ -146,8 +146,8 @@ namespace API.Migrations
                         {
                             Id = -2,
                             Category = "Work",
-                            Date = "2022-07-28 21:52:22.4039092",
-                            DueDate = new DateTime(2022, 8, 5, 21, 52, 22, 403, DateTimeKind.Local).AddTicks(8974),
+                            Date = "2022-07-29 19:45:24.5445835",
+                            DueDate = new DateTime(2022, 8, 6, 19, 45, 24, 544, DateTimeKind.Local).AddTicks(5687),
                             Importance = "HIGH",
                             Status = 2,
                             Title = "Prepare the XD design",
@@ -159,7 +159,7 @@ namespace API.Migrations
                         {
                             Id = -1,
                             Category = "Education",
-                            Date = "2022-07-28 21:52:22.4039099",
+                            Date = "2022-07-29 19:45:24.5445841",
                             Importance = "LOW",
                             Status = 0,
                             Title = "Email the faculity director about the progress",
@@ -238,13 +238,13 @@ namespace API.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f76149c6-6a34-4263-bd27-4a78700b257a",
+                            ConcurrencyStamp = "ea67b559-9d60-49a6-90ba-d7e2c7392405",
                             Email = "user@ido.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEBp66PojsfapmI2o30/JRQ1YrKSmab6ZWcS2PF2foTM7XWhwP1O2YIpnmCxLDra6Hw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPGtFeVWNTQFHZO2B6xfp0bKH8YtqjwuFKF7JqhBe3Wmb4GwGTD5jYSMzBIi61i/8w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dd8e92d1-67f4-4cfe-bd91-d4e290b0c5c5",
+                            SecurityStamp = "0d8253c1-45b7-44b6-a09a-5df0572e298c",
                             TwoFactorEnabled = false,
                             UserName = "IDO User"
                         });

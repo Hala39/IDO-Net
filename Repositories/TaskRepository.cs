@@ -78,6 +78,7 @@ namespace API.Repositories
                 var targetTask = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == updateTaskStatusDto.TaskId);
 
                 targetTask.Status = ((Status) updateTaskStatusDto.TargetStatusIndex);
+                targetTask.Date = DateTime.Now;
 
                 _context.Tasks.Update(targetTask);
 
